@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neos1803/simple-wms.git"
+    "url": "git+git@github.com:subhandp/midtrans-payment.git"
   },
   "keywords": [],
   "author": "Musfirotus S., Nanda W. Purba",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/neos1803/simple-wms/issues"
+    "url": "https://github.com/subhandp/midtrans-payment/issues"
   },
-  "homepage": "https://github.com/neos1803/simple-wms#readme",
+  "homepage": "https://github.com/subhandp/midtrans-payment#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "axios": "^0.20.0",

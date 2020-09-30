@@ -3,22 +3,6 @@ require('dotenv').config()
 const { Payment,Order } = require("../models")
 const response = require('../helpers/response')
 
-const axios = require('axios');
-
-const basicAuth = {
-    username: process.env.MIDTRANS_USERNAME,
-    password: ''
-}
-
-
-
-const Api = axios.create({
-    headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-    },
-});
-
 const midtransClient = require('midtrans-client');
 
 
@@ -80,6 +64,106 @@ class PaymentController {
       //     }
       //   }
       // }
+
+    //   example transactions full
+    //   {
+    //     "id_table_order": 1,
+    //   "transaction_details": {
+    //     "order_id": "ORDER-105-{{$timestamp}}",
+    //     "gross_amount": 10000
+    //   },
+    //   "item_details": [{
+    //     "id": "ITEM1",
+    //     "price": 10000,
+    //     "quantity": 1,
+    //     "name": "Midtrans Bear",
+    //     "brand": "Midtrans",
+    //     "category": "Toys",
+    //     "merchant_name": "Midtrans"
+    //   }],
+    //   "customer_details": {
+    //     "first_name": "John",
+    //     "last_name": "Watson",
+    //     "email": "test@example.com",
+    //     "phone": "+628123456",
+    //     "billing_address": {
+    //       "first_name": "John",
+    //       "last_name": "Watson",
+    //       "email": "test@example.com",
+    //       "phone": "081 2233 44-55",
+    //       "address": "Sudirman",
+    //       "city": "Jakarta",
+    //       "postal_code": "12190",
+    //       "country_code": "IDN"
+    //     },
+    //     "shipping_address": {
+    //       "first_name": "John",
+    //       "last_name": "Watson",
+    //       "email": "test@example.com",
+    //       "phone": "0 8128-75 7-9338",
+    //       "address": "Sudirman",
+    //       "city": "Jakarta",
+    //       "postal_code": "12190",
+    //       "country_code": "IDN"
+    //     }
+    //   },
+    //   "enabled_payments": ["credit_card", "mandiri_clickpay", "cimb_clicks","bca_klikbca", "bca_klikpay", "bri_epay", "echannel","mandiri_ecash", "permata_va", "bca_va", "bni_va", "other_va", "gopay", "indomaret", "alfamart", "danamon_online", "akulaku"],
+    //   "credit_card": {
+    //     "secure": true,
+    //     "bank": "bca",
+    //     "installment": {
+    //       "required": false,
+    //       "terms": {
+    //         "bni": [3, 6, 12],
+    //         "mandiri": [3, 6, 12],
+    //         "cimb": [3],
+    //         "bca": [3, 6, 12],
+    //         "offline": [6, 12]
+    //       }
+    //     },
+    //     "whitelist_bins": [
+    //       "48111111",
+    //       "41111111"
+    //     ]
+    //   },
+    //   "bca_va": {
+    //     "va_number": "12345678911",
+    //     "sub_company_code": "00000",
+    //     "free_text": {
+    //       "inquiry": [
+    //         {
+    //           "en": "text in English",
+    //           "id": "text in Bahasa Indonesia"
+    //         }
+    //       ],
+    //       "payment": [
+    //         {
+    //           "en": "text in English",
+    //           "id": "text in Bahasa Indonesia"
+    //         }
+    //       ]
+    //     }
+    //   },
+    //   "bni_va": {
+    //     "va_number": "12345678"
+    //   },
+    //   "permata_va": {
+    //     "va_number": "1234567890",
+    //     "recipient_name": "SUDARSONO"
+    //   },
+    //   "callbacks": {
+    //     "finish": "https://demo.midtrans.com"
+    //   },
+    //   "expiry": {
+    //     "start_time": "2020-12-13 18:11:08 +0700",
+    //     "unit": "minutes",
+    //     "duration": 1
+    //   },
+    //   "custom_field1": "custom field 1 content",
+    //   "custom_field2": "custom field 2 content",
+    //   "custom_field3": "custom field 3 content"
+    // }
+
         let parameter = JSON.stringify(req.body)
         let transaction = await apiClient.createTransaction(parameter);
 
